@@ -59,7 +59,7 @@ def fetch_rrg_stocks() -> CarStockResponse:
 
     next_url: Optional[str] = RRG_API_URL
     page: int = 1
-    params: Optional[Dict[str, int]] = {"itemsPerPage": 20, "page": page}
+    params: Optional[Dict[str, int]] = {"itemsPerPage": 500, "page": page}
 
     while next_url:
         logger.info("📦 Fetching page %d from %s", page, next_url)
@@ -104,7 +104,7 @@ def main() -> None:
 
     1. Connects to MongoDB.
     2. Fetches **all** vehicle stock data (all pages).
-    3. Bulk‐upserts each CarStockItem into "vehicle_stocks".
+    3. Bulk-upserts each CarStockItem into "vehicle_stocks".
     4. Replaces the "latest" document in "vehicle_stock_aggregations".
     5. Closes the MongoDB connection.
     """
