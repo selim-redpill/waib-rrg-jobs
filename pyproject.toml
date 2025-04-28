@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "waib-rrg-jobs"
+version = "0.1.0"
+description = "This API is designed to automate the daily retrieval of all available new and used vehicle stocks and store them in a database. The stored data will later be utilized by the WAIB project. The system will be implemented in Python and will rely on scheduled cronjobs to ensure regular and reliable updates."
+authors = ["Selim Alastra <selim.alastra@redpill.paris>"]
+readme = "README.md"
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+pymongo = "^4.12.0"
+colorlog = "^6.9.0"
