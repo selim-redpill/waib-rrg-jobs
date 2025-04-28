@@ -25,6 +25,7 @@ MONGO_URI = os.getenv("MONGO_URI")
 
 RRG_API_URL = "https://api.retail-renault-group.fr/car_stocks"
 
+
 def connect_to_mongo() -> PyMongoClient:
     """
     Establish a connection to the MongoDB cluster.
@@ -92,11 +93,8 @@ def fetch_rrg_stocks() -> CarStockResponse:
     # parse the raw dict into our Aggregations Pydantic model
     aggs: Aggregations = Aggregations.model_validate(aggregations_raw)
 
-    return CarStockResponse(
-        totalItems=total_items,
-        items=all_items,
-        aggregations=aggs
-    )
+    return CarStockResponse(totalItems=total_items, items=all_items, aggregations=aggs)
+
 
 def main() -> None:
     """
