@@ -1,0 +1,49 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Poetry virtualenvs (local .venv or global cache)
+.venv/
+.env
+env/
+.venv.bak/
+.poetry/
+
+# VS Code settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Pytest / coverage
+.coverage
+htmlcov/
+.tox/
+.cache/
+.pytest_cache/
+nosetests.xml
+coverage.xml
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# MyPy / Pylint
+.mypy_cache/
+.pyre/
+.pytype/
+.pylint.d/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Test snapshots
+__snapshots__/
