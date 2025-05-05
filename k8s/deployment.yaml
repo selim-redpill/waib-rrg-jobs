@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: waib-rrg-jobs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: waib-rrg-jobs
+  template:
+    metadata:
+      labels:
+        app: waib-rrg-jobs
+    spec:
+      containers:
+        - name: waib-rrg-jobs
+          image: europe-west1-docker.pkg.dev/alice-setup/waib-rrg-jobs/waib-rrg-jobs-dev:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: waib-rrg-jobs
+            - secretRef:
+                name: waib-rrg-jobs-secret
+          volumeMounts:
+            - name: secret-volume
+              mountPath: /creds/google
+              readOnly: true
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "500Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: creds-google
