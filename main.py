@@ -24,6 +24,7 @@ MONGO_URI = os.getenv("MONGO_URI")
 
 RRG_API_URL = "https://api.retail-renault-group.fr/car_stocks"
 
+
 def connect_to_mongo() -> PyMongoClient:
     """
     Establish a connection to the MongoDB cluster.
@@ -100,8 +101,7 @@ def main() -> None:
 
     # 2) upsert vehicles in bulk
     ops = [
-        UpdateOne({"id": item.id}, {"$set": item.model_dump()}, upsert=True)
-        for item in stock_items
+        UpdateOne({"id": item.id}, {"$set": item.model_dump()}, upsert=True) for item in stock_items
     ]
     if ops:
         result = stocks.bulk_write(ops)
@@ -113,9 +113,7 @@ def main() -> None:
         )
 
     # 3) delete vehicles that no longer exist
-    existing_ids = set(
-        doc["id"] for doc in stocks.find({}, {"id": 1})
-    )
+    existing_ids = set(doc["id"] for doc in stocks.find({}, {"id": 1}))
     to_delete_ids = list(existing_ids - current_ids)
 
     if to_delete_ids:

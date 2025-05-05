@@ -43,7 +43,7 @@ poetry install
 
 Create a `.env` file in the project root with the following variables:
 
-```
+```bash
 MONGO_URI=mongodb+srv://username:password@your-cluster.mongodb.net/
 ```
 
@@ -57,13 +57,13 @@ poetry run python main.py
 
 ### Running with Docker
 
-1. Build the Docker image:
+Build the Docker image:
 
 ```bash
 docker build -t waib-rrg-jobs .
 ```
 
-2. Run the container with environment variables:
+Run the container with environment variables:
 
 ```bash
 docker run -e MONGO_URI="mongodb+srv://username:password@your-cluster.mongodb.net/" waib-rrg-jobs
